@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ga</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <header>
+    <%= link_to image_tag('logo.png', size: '160x120'), '/' %>
+    <%= link_to 'Events', events_path %>
+  </header>
+
+  <% flash.each do |name, message| %>
+   <div class="flash-message flash-message-<%= name %>">
+    <%= message %>
+   </div>
+  <% end %>
+
+<%= yield %>
+
+    <div class="footer"><!-- footer section -->
+
+    <div class="login"> <!-- login section -->
+
+      <!-- user signup, login, logout secion  -->
+      <% if current_user %>
+        <%= current_user.email %>
+      <%= link_to 'logout', session_path(session), method: :delete, data: {confirm: 'are you sure?' } %>
+      <% else %>
+        <% if params[:action] != 'new' && params[:controller] != 'users'  %>
+          <%= link_to 'Sign up', new_user_path %>
+         <%= link_to 'Login', login_path %>
+       <% else %>
+         <%= link_to 'Login', login_path %>
+       <% end %>
+      <% end %>
+
+      <!-- account link -->
+     <%= link_to 'Account', my_events_path %>
+
+     <!-- search form -->
+     <%= search_form_for @q, url: search_events_path, html: {method: :post} do |f| %>
+        <%= f.text_field :name_cont %>
+        <%= f.submit %>
+    <% end %>
+
+    </div><!-- closes login -->
+
+    <div>
+      <%= image_tag('footer2.png', size: '900x350') %>
+    </div>
+
+  </div><!-- closes footer -->
+
+</body>
+</html>

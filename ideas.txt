@@ -1,0 +1,40 @@
+<% @user. %>
+
+if 'enrol' then
+
+:enrolment_date, :enrolment_status, :payment_status, :user_id, :event_id
+
+u1 = User.create! name: 'James', email: 'jamesroypoulter@gmail.com', password: 'test', password_confirmation: 'test', role: 'admin'
+u1.events << e1
+u1.save
+
+
+  def new_enrolment (event, user)
+      Enrolment.new event_id: event.id, user_id: user.id, enrolment_date: DateTime.now.to_date, enrolment_status: 'Enrolled', payment_status: 'paid'
+
+  end
+
+def enrol
+  Enrolment.create! enrolment_date: DateTime.now.to_date, enrolment_status: 'Enrolled', payment_status: ''
+end
+
+if 'enrol' then
+  Enrolment.create! enrolment_date: DateTime.now.to_date, enrolment_status: 'Enrolled', payment_status: ''
+end
+
+
+
+HOME PAGE SEARCH
+<%= search_form_for @q, url: search_events_path, html: {method: :post} do |f| %>
+        <%= f.label :name_cont %>
+        <%= f.text_field :name_cont %>
+        <%= f.submit %>
+    <% end %>
+
+
+FLASH USER MESSAGES
+      <% flash.each do |name, message| %>
+      <div class='flash-message flash-message-<%=name%>'>
+        <%= message %>
+      </div>
+      <% end %>

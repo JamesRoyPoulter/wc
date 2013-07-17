@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  event: 
+  location: 
+  booking_date: 2013-07-15
+  time_slot: MyString
+
+two:
+  event: 
+  location: 
+  booking_date: 2013-07-15
+  time_slot: MyString

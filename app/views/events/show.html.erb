@@ -1,0 +1,8 @@
+<h1>Events#show</h1>
+
+<li><%= image_tag @event.event_image.url %></li>
+<li><%= @event.name %></li>
+
+<%= link_to 'Enrol', enrol_path(@event.id) %>
+
+<%= link_to 'Back', events_path %>

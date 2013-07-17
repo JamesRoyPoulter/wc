@@ -1,0 +1,36 @@
+<h1>Events</h1>
+
+<% if flash %>
+  <p><%= flash[:error] %></p>
+<% end %>
+
+<% if can? :create, Event %>
+  <%= link_to 'New Event', new_event_path %>
+<% end %>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Event</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td> <%= image_tag event.event_image.thumb.url %></td>
+    <td><%= link_to event.name, event %></td>
+    <td><%= event.price %></td>
+    <% if can? :create, Event %>
+    <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<br />

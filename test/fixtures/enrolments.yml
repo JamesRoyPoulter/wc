@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  event: 
+  user: 
+  enrolment_date: 2013-07-15
+  payment_status: MyString
+  enrolment_status: MyString
+
+two:
+  event: 
+  user: 
+  enrolment_date: 2013-07-15
+  payment_status: MyString
+  enrolment_status: MyString
