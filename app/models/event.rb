@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :event_image, :name, :price
+  attr_accessible :event_image, :name, :price, :creator
 
   has_many :bookings
   has_many :locations, through: :bookings
