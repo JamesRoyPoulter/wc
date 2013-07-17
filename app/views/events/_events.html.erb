@@ -1,0 +1,10 @@
+<h1>Events</h1>
+
+<% if flash %>
+  <p><%= flash[:error] %></p>
+<% end %>
+
+<% if can? :create, Event %>
+  <%= link_to 'New Event', new_event_path %>
+<% end %>
+

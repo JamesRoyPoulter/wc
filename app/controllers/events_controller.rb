@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   end
 
   def my_events
-    @q = Event.search(params[:q])
+    @q = Event.where(creator_id: current_user.id).search(params[:q])
     @events = @q.result(distinct: true)
     if @q.result.empty?
       flash[:error] = "No matches"
@@ -39,6 +39,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(params[:event])
+    @event.creator=current_user
 
     respond_to do |format|
       if @event.save

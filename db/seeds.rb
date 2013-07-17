@@ -16,5 +16,6 @@ Location.create! name: 'Secret Location', description: 'Its secret, but we promi
 u1 = User.create! name: 'James', email: 'jamesroypoulter@gmail.com', password: 'test', password_confirmation: 'test', role: 'admin'
 u1.events << e1
 u1.save
-User.create! name: 'Elliot', email: 'e@e', password: 'test', password_confirmation: 'test', role: 'changer'
+User.create! name: 'Elliot', email: 'e@e', password: 'test', password_confirmation: 'test', role: 'partner'
+User.create! name: 'Rob', email: 'r@r', password: 'test', password_confirmation: 'test', role: 'partner'
 User.create! name: 'Julian', email: 'j@j', password: 'test', password_confirmation: 'test', role: 'changer'

@@ -10,9 +10,8 @@ Ga::Application.routes.draw do
   resources :sessions, only: [:create, :destroy]
   resources :users
   get 'events/:id/enrol', to: "events#enrol", as: 'enrol'
-  # get "users/index"
-  # get "users/new"
-  # get "users/create"
+  get 'account', to: 'users#account', as: 'account'
+  get 'far_koff', to: 'sessions#destroy'
 
 # EVENTS
 get 'my_events', to: 'events#my_events', as: 'my_events'
