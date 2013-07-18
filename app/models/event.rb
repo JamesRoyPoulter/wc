@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :event_image, :name, :price, :creator_id
+  attr_accessible :event_image, :name, :price, :creator_id, :description, :start_time, :start_date, :end_date, :end_time, :address, :postcode
 
   belongs_to :creator, class_name: 'User'
 

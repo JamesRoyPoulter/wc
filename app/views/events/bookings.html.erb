@@ -1,0 +1,28 @@
+<!-- PARTNER BOOKING SECTION -->
+
+<% if can? :manage, Event %>
+
+<table>
+  <tr>
+    <th>Address</th>
+    <th>Postcode</th>
+    <th>Start time</th>
+    <th>Start date</th>
+    <th>End time</th>
+    <th>End date</th>
+  </tr>
+  <% @events.where(nameCLUSTER FUCK[.each do |event| %>
+    <tr>
+      <td><%= event.address%></td>
+      <td><%= event.postcode%></td>
+      <td><%= event.start_time%></td>
+      <td><%= event.start_date%></td>
+      <td><%= event.end_time%></td>
+      <td><%= event.end_date%></td>
+    </tr>
+  <% end %>
+</table>
+
+
+<% end %>
+

@@ -6,7 +6,6 @@ class EventsController < ApplicationController
     if @q.result.empty?
       flash[:error] = "No matches"
     end
-
   end
 
   def my_events
@@ -15,6 +14,10 @@ class EventsController < ApplicationController
     if @q.result.empty?
       flash[:error] = "No matches"
     end
+  end
+
+  def bookings
+    @events = Event.all
   end
 
   def search
