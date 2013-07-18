@@ -1,11 +1,24 @@
 <h1><%= @event.name %></h1>
 
+
 <!-- EVENT INFORMATION -->
 <!-- event.description put in description -->
 <%= image_tag @event.event_image.url %><br>
 <%= @event.name %><br>
 
+
+<!-- VIEW USERS CURRENTLY ENROLLED -->
+<br>CURRENTLY ENROLLED PARTICIPANTS
+<% if current_user.role = 'partner' %>
+  <% @event.users.each do |user| %>
+    <br><%= user.name %>
+  <% end %>
+<% end %><br>
+
+
 <!-- ENROL -->
+<% if current_user.role != 'partner' %>
 <%= link_to 'Enrol', enrol_path(@event.id) %>
+<% end %>
 <%= link_to 'Back', events_path %>
 

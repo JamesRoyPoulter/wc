@@ -3,3 +3,8 @@
 Name: <%= @user.name %><br>
 Email: <%= @user.email %><br>
 Role: <%= @user.role %><br>
+Enrolments:<br>
+<% @user.events.each do |event| %>
+  <%= event.name %>
+  <%= link_to 'unrol', event, method: :delete, data: { confirm: 'are you sure you want to unrol?' } %><br>
+  <% end %>

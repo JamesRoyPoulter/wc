@@ -17,7 +17,8 @@ class EventsController < ApplicationController
   end
 
   def bookings
-    @events = Event.all
+    @event = Event.find(params[:id])
+    @events = Event.scoped
   end
 
   def search
@@ -36,9 +37,27 @@ class EventsController < ApplicationController
     redirect_to event_path
   end
 
+  def destroy_enrol
+    @event = Event.find(params[:id])
+    @enrolment = Enrolment.destroy(event_id: @event.id, user_id: current_user.id, enrolment_date: DateTime.now.to_date, enrolment_status: 'Active', payment_status: 'pending')
+    redirect_to account_path
+  end
+
+  def clone
+    @event = Event.find(params[:id])
+    @event = @event.dup
+    @event.save
+    render 'new'
+  end
+
   def new
     @event = Event.new
   end
+
+  # def new_booking
+  #   # @event = Event.new
+  #   @event = Event.find(params[:id])
+  # end
 
   def create
     @event = Event.new(params[:event])

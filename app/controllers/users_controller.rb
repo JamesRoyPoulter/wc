@@ -42,6 +42,7 @@ class UsersController < ApplicationController
   end
 
   def account
+    @enrolments = Enrolment.all
     @user = current_user
     respond_to do |format|
       format.html # show.html.erb

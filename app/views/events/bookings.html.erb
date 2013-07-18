@@ -2,6 +2,7 @@
 
 <% if can? :manage, Event %>
 
+
 <table>
   <tr>
     <th>Address</th>
@@ -11,7 +12,7 @@
     <th>End time</th>
     <th>End date</th>
   </tr>
-  <% @events.where(nameCLUSTER FUCK[.each do |event| %>
+  <% @events.where('events.name = ?', @event.name).each do |event| %>
     <tr>
       <td><%= event.address%></td>
       <td><%= event.postcode%></td>
@@ -19,6 +20,7 @@
       <td><%= event.start_date%></td>
       <td><%= event.end_time%></td>
       <td><%= event.end_date%></td>
+      <%= link_to 'New booking', new_booking_path(event) %>
     </tr>
   <% end %>
 </table>

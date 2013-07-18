@@ -15,7 +15,8 @@ Ga::Application.routes.draw do
 
 # EVENTS
 get 'my_events', to: 'events#my_events', as: 'my_events'
-get 'bookings', to: 'events#bookings', as: 'bookings'
+get 'new_booking/:id', to: 'events#clone', as: 'new_booking'
+get 'events/:id/bookings', to: 'events#bookings', as: 'bookings'
 resources :events do
     collection do
       match 'search', to: 'events#search', via: [:get, :post], as: :search
