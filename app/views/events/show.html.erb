@@ -5,11 +5,12 @@
 <!-- event.description put in description -->
 <%= image_tag @event.event_image.url %><br>
 <%= @event.name %><br>
+<%= @event.description %><br>
 
 
 <!-- VIEW USERS CURRENTLY ENROLLED -->
+<% if can? :manage, Event %>
 <br>CURRENTLY ENROLLED PARTICIPANTS
-<% if current_user.role = 'partner' %>
   <% @event.users.each do |user| %>
     <br><%= user.name %>
   <% end %>
@@ -17,8 +18,8 @@
 
 
 <!-- ENROL -->
-<% if current_user.role != 'partner' %>
-<%= link_to 'Enrol', enrol_path(@event.id) %>
+<% unless can? :manage, Event %>
+  <%= link_to 'Enrol', enrol_path(@event.id) %>
 <% end %>
 <%= link_to 'Back', events_path %>
 

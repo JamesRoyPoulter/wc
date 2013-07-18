@@ -7,10 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="container">
   <header>
     <%= link_to image_tag('logo.png', size: '160x120'), '/' %>
-    <%= link_to 'Events', events_path %>
   </header>
 
   <% flash.each do |name, message| %>
@@ -19,9 +18,9 @@
    </div>
   <% end %>
 
-<%= yield %>
+  <%= yield %>
 
-    <div class="footer"><!-- footer section -->
+  <div class="footer"><!-- footer section -->
 
     <div class="login"> <!-- login section -->
 
@@ -38,11 +37,15 @@
        <% end %>
       <% end %>
 
-      <!-- account link -->
-     <% if current_user != nil %>
-       <%= link_to 'My Events', my_events_path %>
-     <% end %>
-     <%= link_to 'Account', account_path %>
+      <!-- event, my event, account links -->
+      <%= link_to 'Events', events_path %>
+      <% if current_user != nil %>
+        <%= link_to 'My Events', my_events_path %>
+      <% end %>
+      <%= link_to 'Account', account_path %>
+      <% if can? :manage, :all %>
+        <%= link_to 'Admin', users_path %>
+      <% end %>
 
 
      <!-- search form -->
@@ -58,6 +61,6 @@
     </div>
 
   </div><!-- closes footer -->
-
+</div><!-- closes container -->
 </body>
 </html>

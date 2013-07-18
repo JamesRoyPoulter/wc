@@ -31,18 +31,21 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  # USER ENROLS ON EVENT
   def enrol
     @event = Event.find(params[:id])
     @enrolment = Enrolment.create(event_id: @event.id, user_id: current_user.id, enrolment_date: DateTime.now.to_date, enrolment_status: 'Active', payment_status: 'pending')
     redirect_to event_path
   end
 
+  # USER UNROLS FROM EVENT
   def destroy_enrol
     @event = Event.find(params[:id])
     @enrolment = Enrolment.destroy(event_id: @event.id, user_id: current_user.id, enrolment_date: DateTime.now.to_date, enrolment_status: 'Active', payment_status: 'pending')
     redirect_to account_path
   end
 
+  # CREATE NEW BOOKING FOR EVENT
   def clone
     @event = Event.find(params[:id])
     @event = @event.dup
@@ -54,13 +57,10 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
-  # def new_booking
-  #   # @event = Event.new
-  #   @event = Event.find(params[:id])
-  # end
-
+  # CREATE NEW EVENT
   def create
     @event = Event.new(params[:event])
+    # DEFINING EVENT CREATOR
     @event.creator=current_user
 
     respond_to do |format|
@@ -96,7 +96,7 @@ class EventsController < ApplicationController
     @event.destroy
 
     respond_to do |format|
-      format.html { redirect_to root_url }
+      format.html { redirect_to events_path }
       format.json { head :no_content }
     end
   end

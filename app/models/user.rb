@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation, :profile_image, :role
+  attr_accessible :email, :name, :password, :password_confirmation, :profile_image
   has_secure_password
   has_many :enrolments
   has_many :events, through: :enrolments

@@ -1,3 +1,6 @@
+// TAGS //
+////////////
+
 body {
 font-family: "News706BT-RomanC",Georgia;
 color: #222;
@@ -7,10 +10,22 @@ margin: auto;
 text-align: center;
 }
 
-.footer {
-  margin-top: 20px;
-}
-
 form {
   display: inline-block;
+}
+
+table {
+  margin: auto;
+}
+
+// CLASSES //
+////////////
+
+.container {
+  margin: auto;
+  text-align: center;
+}
+
+.footer {
+  margin-top: 20px;
 }

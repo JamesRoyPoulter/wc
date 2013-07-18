@@ -11,6 +11,7 @@
     <th>Start date</th>
     <th>End time</th>
     <th>End date</th>
+    <th>Delete booking</th>
   </tr>
   <% @events.where('events.name = ?', @event.name).each do |event| %>
     <tr>
@@ -20,6 +21,7 @@
       <td><%= event.start_date%></td>
       <td><%= event.end_time%></td>
       <td><%= event.end_date%></td>
+      <td> <%= link_to 'delete', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <%= link_to 'New booking', new_booking_path(event) %>
     </tr>
   <% end %>

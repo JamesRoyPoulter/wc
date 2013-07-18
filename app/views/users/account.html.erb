@@ -1,9 +1,9 @@
 <h1>Account</h1>
 
-Name: <%= @user.name %><br>
-Email: <%= @user.email %><br>
-Role: <%= @user.role %><br>
-Enrolments:<br>
+<p>Name: <%= @user.name %></p>
+<p>Email: <%= @user.email %></p>
+<p>Role: <%= @user.role %></p>
+<p>Enrolments:</p>
 <% @user.events.each do |event| %>
   <%= event.name %>
   <%= link_to 'unrol', event, method: :delete, data: { confirm: 'are you sure you want to unrol?' } %><br>

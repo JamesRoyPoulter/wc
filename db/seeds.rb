@@ -19,3 +19,7 @@ u1.save
 User.create! name: 'Elliot', email: 'e@e', password: 'test', password_confirmation: 'test', role: 'partner'
 User.create! name: 'Rob', email: 'r@r', password: 'test', password_confirmation: 'test', role: 'partner'
 User.create! name: 'Julian', email: 'j@j', password: 'test', password_confirmation: 'test', role: 'changer'
+
+user = User.where(name: 'James').first
+user.role = 'admin'
+user.save
