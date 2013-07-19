@@ -1,10 +1,10 @@
+<div class='show_body'>
 <h1><%= @event.name %></h1>
 
 
 <!-- EVENT INFORMATION -->
 <!-- event.description put in description -->
 <%= image_tag @event.event_image.url %><br>
-<%= @event.name %><br>
 <%= @event.description %><br>
 
 
@@ -22,4 +22,4 @@
   <%= link_to 'Enrol', enrol_path(@event.id) %>
 <% end %>
 <%= link_to 'Back', events_path %>
-
+</div>

@@ -3,7 +3,7 @@ Ga::Application.routes.draw do
   get "enrolments/create"
 
 # ROOT
-  root to: 'home#home'
+  root to: 'events#index'
 
 # USERS
   get '/login', to: 'sessions#new'

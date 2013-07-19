@@ -1,25 +1,27 @@
 <%= render 'events' %>
 
-<table>
-  <tr>
-    <th></th>
-    <th>Event</th>
-    <th>Price</th>
-    <th></th><th></th><th></th>
-  </tr>
+<!-- RENDERS BOXES ON EVENT PAGE -->
+<div class='quad_view_container'>
 
 <% @events.each do |event| %>
-  <tr>
-    <td> <%= image_tag event.event_image.thumb.url %></td>
-    <td><%= link_to event.name, event %></td>
-    <td><%= event.price %></td>
-    <% if can? :manage, event %>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <% end %>
-  </tr>
-<% end %>
-</table>
 
-<br />
-<br />
+  <div class='quad_view_box'>
+
+    <div class='quad_box_image'>
+      <%= image_tag event.event_image.detail.url, size: '150x150' %>
+    </div>
+
+    <div class='quad_box_text'>
+      <h4><%= link_to event.name, event %></h4>
+      <!-- THIS CUTS DESCRIPTION TO 70 CHARACTERS -->
+      <p><%= event.description.split(" ").each_with_object("") {|x,ob| break ob unless (ob.length + " ".length + x.length <= 70);ob << (" " + x)}.strip %></p>
+      <p><%= event.price %></p>
+    </div>
+    <% if can? :manage, event %>
+    <%= link_to 'Edit', edit_event_path(event) %>
+    <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+
+  </div><!-- end_of_ quod_box_biew -->
+<% end %>
+</div><!-- end of quad_view_container -->

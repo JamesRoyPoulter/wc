@@ -6,6 +6,11 @@ class User < ActiveRecord::Base
 
   before_save :ensure_user_has_role
 
+  # VALIDATIONS
+  validates :email, presence: true
+  validates :email, uniqueness: true
+
+
   def ensure_user_has_role
     self.role = "user" if self.role==nil
   end

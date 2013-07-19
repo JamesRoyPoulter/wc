@@ -8,6 +8,7 @@ font-size: 100%;
 line-height: 1.5;
 margin: auto;
 text-align: center;
+font-family: 'Source Sans Pro', sans-serif;
 }
 
 form {
@@ -16,6 +17,14 @@ form {
 
 table {
   margin: auto;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+h4 {
+  margin-top: 5px;
 }
 
 // CLASSES //
@@ -28,4 +37,48 @@ table {
 
 .footer {
   margin-top: 20px;
+  clear: both;
+  margin-top: 20px;
+  padding: 30px;
+}
+
+.quad_view_container {
+  width: 900px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.quad_view_box {
+  // margin: 5px, 5px, 5px, 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  display: inline;
+  position: relative;
+  width: 46%;
+  height: 150px;
+  float: left;
+  border: 8px solid #79a8d2;
+}
+
+.quad_box_image {
+  float: left;
+  height: 150px;
+  width: 150px;
+}
+
+.quad_box_text {
+  height: 100%;
+  background-color: 91e4c3;
+  overflow: hidden;
+}
+
+.footer_image {
+  margin-top: 20px;
+}
+
+.show_body {
+  width: 800px;
+  margin: auto;
 }

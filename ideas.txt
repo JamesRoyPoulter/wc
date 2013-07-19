@@ -52,3 +52,33 @@ USER CONTROLLER CREATE
       render 'new'
     end
   end
+
+
+
+EVENTS INDEX BEFORE REDO
+
+<%= render 'events' %>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Event</th>
+    <th>Price</th>
+    <th></th><th></th><th></th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td> <%= image_tag event.event_image.thumb.url %></td>
+    <td><%= link_to event.name, event %></td>
+    <td><%= event.price %></td>
+    <% if can? :manage, event %>
+    <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<br />
